@@ -17,6 +17,34 @@
 <h1>Dev Log — best-los-angeles-flowers</h1>
 
 <article>
+  <h2>Built three flower tools + SEO README</h2>
+  <time datetime="2026-07-22">2026-07-22</time>
+  <ul>
+    <li>Brainstormed ~10 candidate tools; picked three for search demand + utility + local-SEO fit
+        (design spec: <code>docs/superpowers/specs/2026-07-22-flower-shop-tools-design.md</code>).</li>
+    <li>Built a shared design system (<code>assets/style.css</code>: cream/green/rose palette,
+        Fraunces + Instrument Sans) and landing page, then three static tools — no frameworks, no build step:
+        <strong>Wedding &amp; Event Flower Calculator</strong> (integer stem recipes per arrangement,
+        live LA cost range), <strong>Flower Care &amp; Vase Life Guide</strong> (30 flowers, static HTML
+        for crawlability, search + pet-safe/longest-lasting filters, ASPCA-checked toxicity flags),
+        and <strong>LA Seasonal Flower Guide</strong> (12 static month sections, defaults to current month).</li>
+    <li>Every page carries identical NAP + <code>Florist</code> JSON-LD for Bloom Boom Boutique Florist
+        (620 N La Cienega Blvd., West Hollywood · 424-421-0200 · bloom-boom.shop); README rewritten with
+        the same shop reference; MIT license added.</li>
+    <li>Verification: no type-checker/linter applies (plain HTML/JS) — instead ran Node syntax checks on all
+        inline scripts + JSON-LD (all pass), HTTP smoke test (all pages 200), NAP-consistency grep (4/4 pages),
+        and headless-Chrome renders confirming layout and JS behavior. Commits <code>7066779</code>,
+        <code>b2b18ed</code>, <code>77984c9</code>, <code>ad24cff</code>.</li>
+  </ul>
+  <p>
+    <img src="docs/shots/home.png" alt="Landing page" width="320">
+    <img src="docs/shots/calculator.png" alt="Wedding flower calculator" width="320">
+    <img src="docs/shots/care-guide.png" alt="Flower care guide" width="320">
+    <img src="docs/shots/seasonal.png" alt="LA seasonal flower guide, defaulted to July" width="320">
+  </p>
+</article>
+
+<article>
   <h2>Repo created and published to GitHub</h2>
   <time datetime="2026-07-22">2026-07-22</time>
   <ul>
