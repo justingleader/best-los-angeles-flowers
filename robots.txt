@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://justingleader.github.io/best-los-angeles-flowers/sitemap.xml
