@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding Flower Calculator — How Many Flowers Do I Need? | Best Los Angeles Flowers</title>
+<meta name="description" content="Free wedding flower calculator: estimate stem counts and Los Angeles flower costs for bouquets, centerpieces, and ceremony pieces. From Bloom Boom Boutique Florist, West Hollywood.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Florist",
+  "name": "Bloom Boom Boutique Florist",
+  "url": "https://bloom-boom.shop",
+  "telephone": "+1-424-421-0200",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "620 N La Cienega Blvd.",
+    "addressLocality": "West Hollywood",
+    "addressRegion": "CA",
+    "postalCode": "90069",
+    "addressCountry": "US"
+  },
+  "areaServed": "Los Angeles, CA"
+}
+</script>
+<style>
+  /* Page-specific tweaks only — everything else comes from the shared sheet. */
+  .field .field-hint { display: block; margin-top: 0.1rem; }
+  .results-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  .cost-callout {
+    margin-top: 1.25rem;
+    background: var(--rose-soft);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+  }
+  .cost-callout .cost-figure {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    color: var(--green-dark);
+    line-height: 1.1;
+  }
+  .num-cell { text-align: right; font-variant-numeric: tabular-nums; }
+  tfoot td { font-weight: 600; border-top: 2px solid var(--line); }
+  .empty-state { color: var(--muted); margin: 0; }
+  .faq h3 { margin-bottom: 0.25rem; }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="container nav-inner">
+    <a class="wordmark" href="../">Best Los Angeles Flowers</a>
+    <nav>
+      <a href="../wedding-flower-calculator/" aria-current="page">Wedding Calculator</a>
+      <a href="../flower-care-guide/">Care Guide</a>
+      <a href="../la-seasonal-flowers/">Seasonal Guide</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="tool-header">
+    <p class="eyebrow">Free wedding planning tool</p>
+    <h1>Wedding &amp; Event Flower Calculator</h1>
+    <p class="lede">Enter how many of each arrangement you need and we'll estimate the total
+    stem count — focal flowers, secondary blooms, filler, and greenery — plus a realistic
+    Los Angeles cost range. Numbers update as you type.</p>
+  </div>
+
+  <div class="card">
+    <h2>What are you making?</h2>
+    <p class="muted">Stem counts are per arrangement, based on standard florist recipes. Adjust up
+    for large, lush designs or down for minimal ones.</p>
+    <div class="field-grid">
+      <div class="field">
+        <label for="bridal">Bridal bouquet <span class="field-hint">≈ 25–30 stems</span></label>
+        <input type="number" id="bridal" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="bridesmaid">Bridesmaid bouquets <span class="field-hint">≈ 15–18 stems each</span></label>
+        <input type="number" id="bridesmaid" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="bout">Boutonnieres <span class="field-hint">1 focal + accents</span></label>
+        <input type="number" id="bout" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="corsage">Corsages <span class="field-hint">≈ 4–5 stems each</span></label>
+        <input type="number" id="corsage" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="cpSmall">Small centerpieces <span class="field-hint">≈ 10 stems each</span></label>
+        <input type="number" id="cpSmall" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="cpMed">Medium centerpieces <span class="field-hint">≈ 20 stems each</span></label>
+        <input type="number" id="cpMed" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="cpLarge">Large centerpieces <span class="field-hint">≈ 35 stems each</span></label>
+        <input type="number" id="cpLarge" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="arch">Ceremony arch / arbor piece <span class="field-hint">greenery-heavy, ≈ 100+ stems</span></label>
+        <input type="number" id="arch" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="aisle">Aisle markers <span class="field-hint">≈ 8–10 stems each</span></label>
+        <input type="number" id="aisle" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+      <div class="field">
+        <label for="cake">Cake flowers <span class="field-hint">≈ 10–15 stems</span></label>
+        <input type="number" id="cake" min="0" max="99" value="0" inputmode="numeric">
+      </div>
+    </div>
+  </div>
+
+  <div class="card" id="results" aria-live="polite">
+    <div class="results-head">
+      <h2>Your estimate</h2>
+      <button type="button" class="btn no-print" id="printBtn">Print / save this estimate</button>
+    </div>
+
+    <div id="emptyState">
+      <p class="empty-state">Add your arrangements above to see stem counts and a cost range.</p>
+    </div>
+
+    <div id="estimate" hidden>
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Flower role</th>
+            <th scope="col" class="num-cell">Stems</th>
+            <th scope="col" class="num-cell">Typical LA price / stem</th>
+          </tr>
+        </thead>
+        <tbody id="roleRows"></tbody>
+        <tfoot>
+          <tr>
+            <td>Total stems</td>
+            <td class="num-cell" id="totalStems">0</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <div class="cost-callout">
+        <div class="muted" style="font-size:0.85rem; text-transform:uppercase; letter-spacing:0.08em;">
+          Estimated Los Angeles retail cost
+        </div>
+        <div class="cost-figure" id="costRange">$0</div>
+        <p class="muted" style="margin:0.5rem 0 0; font-size:0.9rem;">
+          DIY sourcing at the LA flower market typically runs 40–60% lower per stem. Full-service
+          florist pricing is higher because it includes design, mechanics, delivery, and setup.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-soft mt-2">
+    <h3>Planning a wedding in Los Angeles?</h3>
+    <p>Bloom Boom Boutique Florist does full wedding and event florals — bouquets, ceremony pieces,
+    centerpieces, and on-site setup. For a real quote tailored to your venue and colors, call
+    <a href="tel:+14244210200">424-421-0200</a> or visit
+    <a href="https://bloom-boom.shop">bloom-boom.shop</a>.</p>
+  </div>
+
+  <section class="faq" aria-labelledby="faqHeading">
+    <h2 id="faqHeading">Common questions</h2>
+
+    <h3>How many flowers do I need for a wedding?</h3>
+    <p>It depends on your guest count and how full you like your arrangements, but a useful rule of
+    thumb is that a bridal bouquet uses about 25–30 stems, a bridesmaid bouquet 15–18, and a table
+    centerpiece anywhere from 10 stems (small and airy) to 35+ (large and lush). Ceremony
+    installations like arches are the big variable — they can swallow 100 stems or more, mostly
+    greenery. The calculator above adds these up for you so you can see a realistic total before you
+    shop or request a quote.</p>
+
+    <h3>How much do wedding flowers cost in Los Angeles?</h3>
+    <p>At LA retail prices, focal blooms like garden roses and peonies run roughly $4–9 per stem,
+    secondary flowers $2.50–5, filler $1.50–3, and greenery $1–2.50. That means a single lush bridal
+    bouquet often lands around $150–250 in flowers alone. Full-service pricing from a studio such as
+    Bloom Boom Boutique Florist also covers design time, mechanics, delivery, and setup, which is why
+    a finished wedding package costs more than the raw stems.</p>
+
+    <h3>Should I DIY my wedding flowers?</h3>
+    <p>DIY can cut your flower spend by 40–60% if you buy in bulk at the LA flower market, but it
+    trades money for time — conditioning stems, arranging, storing them cold, and transporting
+    everything on the morning of the event. Bouquets and boutonnieres are the trickiest to get
+    looking polished, so many couples DIY their centerpieces and leave the personal flowers and
+    ceremony installs to a professional like Bloom Boom Boutique Florist.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <p class="footer-brand">Brought to you by <a href="https://bloom-boom.shop">Bloom Boom Boutique Florist</a></p>
+  <p>620 N La Cienega Blvd., West Hollywood, CA 90069 · <a href="tel:+14244210200">424-421-0200</a></p>
+  <p><a href="https://bloom-boom.shop">bloom-boom.shop</a> — fresh flower delivery in West Hollywood &amp; Los Angeles</p>
+</footer>
+
+<script>
+  // Per-arrangement stem recipes, split into focal / secondary / filler / greenery.
+  // Integers so totals are exact; totals shown as hints are approximate ("≈").
+  var ITEMS = [
+    { id: 'bridal',     roles: { focal: 10, secondary: 7, filler: 6, greenery: 5 } },  // 28
+    { id: 'bridesmaid', roles: { focal: 5,  secondary: 4, filler: 3, greenery: 4 } },  // 16
+    { id: 'bout',       roles: { focal: 1,  secondary: 0, filler: 1, greenery: 1 } },  // 3  (focal-led)
+    { id: 'corsage',    roles: { focal: 2,  secondary: 1, filler: 1, greenery: 1 } },  // 5
+    { id: 'cpSmall',    roles: { focal: 3,  secondary: 2, filler: 3, greenery: 2 } },  // 10
+    { id: 'cpMed',      roles: { focal: 7,  secondary: 5, filler: 5, greenery: 5 } },  // 22
+    { id: 'cpLarge',    roles: { focal: 11, secondary: 9, filler: 8, greenery: 8 } },  // 36
+    { id: 'arch',       roles: { focal: 22, secondary: 20, filler: 18, greenery: 50 } }, // 110 (greenery-heavy)
+    { id: 'aisle',      roles: { focal: 3,  secondary: 2, filler: 2, greenery: 2 } },  // 9
+    { id: 'cake',       roles: { focal: 4,  secondary: 3, filler: 2, greenery: 3 } }   // 12
+  ];
+
+  // Los Angeles retail per-stem price ranges by role.
+  var ROLES = [
+    { key: 'focal',     name: 'Focal blooms',     low: 4,   high: 9,   per: '$4–9' },
+    { key: 'secondary', name: 'Secondary blooms', low: 2.5, high: 5,   per: '$2.50–5' },
+    { key: 'filler',    name: 'Filler',           low: 1.5, high: 3,   per: '$1.50–3' },
+    { key: 'greenery',  name: 'Greenery',         low: 1,   high: 2.5, per: '$1–2.50' }
+  ];
+
+  var inputs = ITEMS.map(function (it) { return document.getElementById(it.id); });
+  var emptyState = document.getElementById('emptyState');
+  var estimate = document.getElementById('estimate');
+  var roleRows = document.getElementById('roleRows');
+  var totalStemsEl = document.getElementById('totalStems');
+  var costRangeEl = document.getElementById('costRange');
+
+  function clamp(n) {
+    n = Math.floor(Number(n));
+    if (isNaN(n) || n < 0) return 0;
+    if (n > 99) return 99;
+    return n;
+  }
+
+  function money(n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  }
+
+  function compute() {
+    var totals = { focal: 0, secondary: 0, filler: 0, greenery: 0 };
+    var anything = 0;
+
+    ITEMS.forEach(function (it, i) {
+      var qty = clamp(inputs[i].value);
+      anything += qty;
+      for (var key in it.roles) {
+        totals[key] += it.roles[key] * qty;
+      }
+    });
+
+    if (anything === 0) {
+      emptyState.hidden = false;
+      estimate.hidden = true;
+      return;
+    }
+    emptyState.hidden = true;
+    estimate.hidden = false;
+
+    var grand = 0, costLow = 0, costHigh = 0, html = '';
+    ROLES.forEach(function (r) {
+      var stems = totals[r.key];
+      grand += stems;
+      costLow += stems * r.low;
+      costHigh += stems * r.high;
+      html += '<tr><td>' + r.name + '</td>' +
+              '<td class="num-cell">' + stems + '</td>' +
+              '<td class="num-cell">' + r.per + '</td></tr>';
+    });
+
+    roleRows.innerHTML = html;
+    totalStemsEl.textContent = grand;
+    costRangeEl.textContent = money(costLow) + '–' + money(costHigh);
+  }
+
+  inputs.forEach(function (el) {
+    el.addEventListener('input', function () {
+      // Leave the field alone while it's empty so users can clear and retype;
+      // compute() already treats empty as 0.
+      var c = clamp(el.value);
+      if (el.value !== '' && String(c) !== el.value) el.value = c;
+      compute();
+    });
+  });
+
+  document.getElementById('printBtn').addEventListener('click', function () {
+    window.print();
+  });
+
+  compute();
+</script>
+
+</body>
+</html>
